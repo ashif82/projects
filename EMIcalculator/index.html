@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        function LoadAmount(){
+         document.getElementById("lstLoad").value=document.getElementById("lblLoad").value;
+        }
+        function RateChange(){
+            document.getElementById("lstIntrest").value=document.getElementById("lblIntrest").value;
+
+        }
+    function YearChange(){
+        document.getElementById("lstYear").value=document.getElementById("lblYear").value;
+
+    }
+    function SubmitClick(){
+        var p= parseInt(document.getElementById("lstLoad").value);
+        var r= parseFloat(document.getElementById("lstIntrest").value)/12/100;
+        var n =parseInt(document.getElementById("lstYear").value)*12;
+        var EMI = p*r* (Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+        document.getElementById("lblResult").innerHTML=`Your installment amount is &#8377 <strong> ${EMI.toLocaleString('en-IN',{style:'currency',currency:'INR'})} </strong> for next ${n} months`
+
+    }
+
+    </script>
+</head>
+<body class="container-fluid ">
+    <div>
+        <div class="row mt-4">
+            <div class="col">
+               
+                <div> Loan Amount<input type="text" size="14" id="lstLoad"></div>
+            </div>
+           <div class="col">
+            <div>For<input type="text"id="lstIntrest">%</div>
+           </div>
+           <div class="col">
+            <div><input type="text"id="lstYear">Year</div>
+           </div>
+    
+        </div>
+        <div class="row my-4">
+            <div class="col"><input onchange="LoadAmount()" type="range" class="form-range" value="100000"min="100000"max="1000000"id="lblLoad"><div>
+                <span>100000</span>
+                <span class="float-end">1000000</span>
+            </div></div>
+            
+            <div class="col"><input onchange="RateChange()" type="range" class="form-range" value="1"min="10.45"max="18.45"id="lblIntrest"><div>
+                <span>1</span>
+                <span class="float-end">5</span>
+            </div></div>
+           
+            <div class="col"><input onchange="YearChange()" type="range" class="form-range" value="10.45"min="1"max="5"id="lblYear"><div>
+                <span>10.45%</span>
+                <span class="float-end">18.45%</span>
+            </div></div>
+            
+            </div>
+            <button onclick="SubmitClick()"  class="btn btn-primary float-end">Submit</button>
+    </div>
+    <div class="my-4 text-center fs-3"  >
+        <div id="lblResult">
+
+        </div>
+    </div>
+</body>
+</html>
