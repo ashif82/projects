@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        function CalculateClick(){
+            var height = parseFloat(document.getElementById("lblHeight").value)/100;
+            var weight = parseFloat(document.getElementById("lblWeight").value)
+            var result  = weight/(Math.pow(height,2));
+            document.getElementById("Result").innerHTML = `Your BMI is = ${result.toFixed(2)}`;
+
+        }
+        function ClearClick(){
+            var height = document.getElementById("lblHeight").value=""
+            var weight = document.getElementById("lblWeight").value=""
+        }
+
+    </script>
+</head>
+<body class="container-fluid w-50 text-center bg-dark ">
+    
+    <div class=" text-center border border-secondary my-4 py-4 bg-dark text-white">
+        <h3> Calculator</h3>
+        <div class="row ">
+            <div class="col">
+                age <input type="text">
+            </div>
+           <div class="row my-2">
+            <div class="col">
+                Gender <input type="radio"><label >Male</label><input class="mx-2" type="radio"><label >Female</label>
+            </div>
+           </div>
+           <div class="row my-2">
+            <div class="col">
+                Height <input id="lblHeight" type="text"placeholder=
+            "height">
+            </div>
+           </div>
+           <div class="row my-2">
+            <div class="col">
+                Weight <input id="lblWeight" type="text"placeholder=
+            "pounds">
+
+            </div>
+           </div>
+           <div class="row my-3">
+            <div class="col">
+               <button onclick="CalculateClick()" class="btn btn-success">Calculates <span class="bi bi-play"></span></button>
+               <button onclick="ClearClick()" class="btn btn-secondary">Clear</button>
+            
+            </div>
+           </div>
+
+        </div>
+    </div>
+    <div class="col my-4 text-light">
+        <div id="Result"> 
+            <div></div>
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>
