@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var tip="";
+        var regExp=/ /;
+        
+        function varifyChange(){
+            var lblCountry = document.getElementById("lblcountry").value;
+            var image = document.getElementById("lblimg");
+            var  mobile = document.getElementById("lblMobile");
+            if(lblCountry=="India"){
+                
+                tip="+91 and 10 digit";
+                mobile.placeholder=tip;
+                regExp=/\+91\d{10}/;
+                image.src="../numberverification/img/indiaflag.webp" ;
+
+            }
+            else{
+                if(lblCountry=="Us"){
+                    tip="eg:+1111 111 11"
+                    mobile.placeholder=tip;
+                    regExp = /\+\(1\)\(\d{3}\)\s\d{3}-\d{4}/;
+                    image.src="../numberverification/img/usflag.webp";
+                }
+                else{
+                   if(lblCountry=="UK"){
+                    tip="eg:345 553 533"
+                    mobile.placeholder=tip;
+                    regExp = /\+\(44\)\(\d{2}\)\s\d{4}\s\d{4}/;
+                    image. src="../numberverification/img/usflag.webp";
+                   }
+                }
+            }
+
+        }
+
+        function verifyClick(){
+            var verifyNumber= document.getElementById("verifyNumber");
+            var mobile =document.getElementById("lblMobile").value;
+            if(mobile.match(regExp)){
+                verifyNumber.innerHTML="Mobile verify".fontcolor("green");
+            }
+            else{
+                verifyNumber.innerHTML=`Invalid"${tip}`.fontcolor("red");
+            }
+
+        }
+    </script>
+    
+</head>
+<body class="container-fluid">
+    <h3>Your Mobile Verification</h3>
+    <div class="w-25 "> 
+       
+        <dl >
+            <dt>Select Your Country</dt>
+            <dd class="input-group"><select onchange="varifyChange()" class="form-select"id="lblcountry">
+                <option>Select Country</option>
+                <option>India</option>
+                <option>Us</option>
+                <option>UK</option>
+                
+            </select>
+            <img  id="lblimg" class="input-group-text"width="70">
+        <img src="" alt="">
+        </dd>
+            
+            <dt>Mobile Number</dt>
+            <dd><input type="text" class="form-control"id="lblMobile"></dd>
+            <dd id="verifyNumber"></dd>
+            <button onclick="verifyClick()" class="btn btn-warning w-100">Verify Mobile</button>
+        </dl>
+    </div>
+    
+</body>
+</html>
